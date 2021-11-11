@@ -15,7 +15,7 @@
             <template #icon>
               <DesktopOutlined />
             </template>
-            <span>{{item.name}}</span>
+            <span>{{item.name}}</span> 
           </a-menu-item>
         </template>
       </a-menu>
