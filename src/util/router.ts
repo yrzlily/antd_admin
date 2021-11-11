@@ -3,7 +3,7 @@ import sotre from '../store/index'
 
 //路由集合
 const routes = [
-  {name: 'main', path: '/', component: ()=>import('../components/main.vue'), meta:{auth:true} ,children:[
+  {name: 'main', path: '/', redirect: '/index', component: ()=>import('../components/main.vue'), meta:{auth:true} ,children:[
     {name: 'index', path: '/index', component: ()=>import('../components/common/index.vue'), meta:{auth: true} },
     {name: 'list', path: '/list', component: ()=>import('../components/common/list.vue'), meta:{auth: true} },
   ]},

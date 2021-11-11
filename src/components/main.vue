@@ -13,7 +13,7 @@
           </a-sub-menu>
           <a-menu-item v-else key="item.id" @click="toRouter(item.path)">
             <template #icon>
-              <DesktopOutlined />
+              <DatabaseOutlined />
             </template>
             <span>{{item.name}}</span> 
           </a-menu-item>
@@ -30,7 +30,7 @@
         <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
           <div class="userBox">
             <a-dropdown>
-              <a class="ant-dropdown-link" @click.prevent>
+              <a v-promise="'admin'" class="ant-dropdown-link" @click.prevent>
                 个人信息
                 <DownOutlined />
               </a>
@@ -58,6 +58,7 @@ import {
   MenuFoldOutlined,
   DownOutlined ,
   DesktopOutlined ,
+  DatabaseOutlined,
 } from '@ant-design/icons-vue';
 import { defineComponent, ref, getCurrentInstance } from 'vue';
 import MenuList from '@/components/base/menu.vue'
@@ -68,7 +69,8 @@ export default defineComponent({
     MenuFoldOutlined,
     DownOutlined,
     MenuList,
-    DesktopOutlined
+    DesktopOutlined,
+    DatabaseOutlined,
   },
   setup() {
     const {proxy} = <any>getCurrentInstance()
