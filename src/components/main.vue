@@ -83,17 +83,17 @@ export default defineComponent({
     //菜单列表
     const menuList = <any>[
       {
-        id:1, name:'主页面', children:[
-          {id:2, name:'子页面2', children:[
-            {id:4, name:'子页面4', path:'/index', children:[
-              {id:6, name:'子页面6', path:'/index'},
+        id:'1', name:'主页面', children:[
+          {id:'2', name:'子页面2', children:[
+            {id:'4', name:'子页面4', path:'/index', children:[
+              {id:'6', name:'子页面6', path:'/index'},
             ]},
-            {id:5, name:'子页面5', path:'/user'},
+            {id:'5', name:'子页面5', path:'/user'},
           ]},
-          {id:3, name:'子页面3', path:'/doct'},
+          {id:'3', name:'子页面3', path:'/doct'},
         ]
       },
-      {id:4, name:'列表页面', path:'/list'}
+      {id:'4', name:'列表页面', path:'/list'}
     ];
 
     //退出登录
@@ -106,7 +106,7 @@ export default defineComponent({
 
     return {
       collapsed: ref<boolean>(false),
-      selectedKeys: ref<string[]>([]),
+      selectedKeys: ref<string[]>(['6']),
       menuList,
       logoutBtn,
       toRouter,
@@ -123,7 +123,9 @@ export default defineComponent({
         display: inline-block; padding: 0 20px;
       }
     }
-    
+    .tabList{
+      
+    }
   }
   #main_content .trigger {
     font-size: 18px;

@@ -1,14 +1,16 @@
 <template>
   <div class="main">
-    <a-button @click="toList">toList</a-button>
-    <div v-for="item in newArr" :key="item">{{item}}</div>
+    <Table :form="form" :formData="formData"></Table>
   </div>
 </template>
 <script lang="ts">
-import { ref, getCurrentInstance  } from 'vue'
+import { ref, getCurrentInstance, reactive  } from 'vue'
 import Common from '@/util/common'
-
+import Table from '@/components/table/index.vue'
 export default {
+  components:{
+    Table
+  },
   setup(){
     const {proxy} = <any>getCurrentInstance()
     const count = ref<number>(0)
@@ -44,10 +46,25 @@ export default {
       })
     }
 
+    const formData = reactive([
+      {label:'姓名',value:'name',type:'input'},
+      {label:'年龄',value:'select',type:'select',selectList:[
+        {name:'12',value:12},
+        {name:'18',value:18},
+      ]},
+    ]);
+
+    const form = ref({
+      name:'test',
+      select:18,
+    })
+
     return {
       newArr,
       toList,
       count,
+      formData,
+      form,
     }
   }
 }
