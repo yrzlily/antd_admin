@@ -1,6 +1,7 @@
 <template>
   <div class="main">
-    <Table :form="form" :formData="formData"></Table>
+    <Table :form="form" :formData="formData">
+    </Table>
   </div>
 </template>
 <script lang="ts">
@@ -15,6 +16,20 @@ export default {
     const {proxy} = <any>getCurrentInstance()
     const count = ref<number>(0)
 
+    let assList = {a:1, b:2}
+    // let obsList = assList;
+    let obsList = <any>{};
+    for(let item in assList){
+      obsList[item] = assList[item];
+    }
+    obsList.b = 3;
+    console.log(assList, obsList)
+
+    let mapList = <any>[1, 2, 4, 5];
+    mapList.some((res:any) => {
+      console.log(res)
+      return true;
+    })
 
     let x = [7, 8, 9, 10];
     let arr = [1, ...x];
@@ -48,16 +63,23 @@ export default {
 
     const formData = reactive([
       {label:'姓名',value:'name',type:'input'},
-      {label:'年龄',value:'select',type:'select',selectList:[
+      {label:'年龄',value:'age',type:'select',selectList:[
         {name:'12',value:12},
         {name:'18',value:18},
+      ]},
+      {label:'性别',value:'sex',type:'radio',radioList:[
+        {name:'男',value:1},
+        {name:'女',value:2},
       ]},
     ]);
 
     const form = ref({
-      name:'test',
-      select:18,
+      name:'admin',
+      age:18,
+      sex:1,
     })
+
+    const msg = ref(0)
 
     return {
       newArr,
@@ -65,6 +87,7 @@ export default {
       count,
       formData,
       form,
+      msg,
     }
   }
 }
