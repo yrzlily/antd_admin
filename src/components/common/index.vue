@@ -1,7 +1,6 @@
 <template>
   <div class="main">
-    <Table :form="form" :formData="formData">
-    </Table>
+    <Table :form="form" :formData="formData"></Table>
   </div>
 </template>
 <script lang="ts">
